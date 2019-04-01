@@ -1,13 +1,10 @@
+require 'open-uri'
+require 'pry'
+require 'nokogiri'
+
 class Scraper
 
-@@all = [1, 2]
-
-def say_hello
-  puts "Hello"
-end
-
-def self.all
-  @@all
-end
-
+  def self.scrape_index_page(index_url)
+      nfl_stats = Nokogiri::HTML(open(index_url))
+  end
 end

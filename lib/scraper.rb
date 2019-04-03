@@ -5,30 +5,28 @@ require_relative 'card.rb'
 
 class Scraper
 
-CARDS =[]
+BASE_URL = "https://www.muthead.com/19/players"
 
   def self.scrape_muthead
-      #html = open(NFL_STATS)
-      doc = Nokogiri::HTML(open("https://www.muthead.com/19/players"))
-      # cards = []
-      #binding.pry
+      cards = []
 
+      doc = Nokogiri::HTML(open(BASE_URL))
       doc.css("tr.even, tr.odd").each do |details|
         name = details.css("a").text.strip
         program = details.css("span").text.strip
         ovr = details.css(".col-overall").text.strip
         position = details.css(".col-position").text.strip
         price = details.css(".col-price").text.strip
-        CARDS << {
+        #href =  details.css("a").attribute("href").value
+        # binding.pry
+        cards << {
           name: name,
           program: program,
           ovr: ovr,
           position: position,
           price: price
         }
-        #binding.pry
       end
-      binding.pry
+      cards
     end
-scrape_muthead
 end

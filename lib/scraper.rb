@@ -8,7 +8,7 @@ class Scraper
 BASE_URL = "https://www.muthead.com/19/players"
 
   def self.scrape_muthead
-      cards = []
+      card_array = []
 
       doc = Nokogiri::HTML(open(BASE_URL))
       doc.css("tr.even, tr.odd").each do |details|
@@ -18,8 +18,7 @@ BASE_URL = "https://www.muthead.com/19/players"
         position = details.css(".col-position").text.strip
         price = details.css(".col-price").text.strip
         #href =  details.css("a").attribute("href").value
-        # binding.pry
-        cards << {
+        card_array << {
           name: name,
           program: program,
           ovr: ovr,
@@ -27,6 +26,6 @@ BASE_URL = "https://www.muthead.com/19/players"
           price: price
         }
       end
-      cards
+      Card.create_from_array(card_array)
     end
 end

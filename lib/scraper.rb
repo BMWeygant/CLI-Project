@@ -17,7 +17,7 @@ BASE_URL = "https://www.muthead.com/19/players"
         ovr = details.css(".col-overall").text.strip
         position = details.css(".col-position").text.strip
         price = details.css(".col-price").text.strip
-        #href =  details.css("a").attribute("href").value
+        href = details.css("a").attribute("href").value
         card_array << {
           name: name,
           program: program,

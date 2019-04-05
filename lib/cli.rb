@@ -16,13 +16,13 @@ attr_accessor :card_array
 
     input = nil
     until input == 'gtfoh'
-      input = gets.strip.to_i
+      input = gets.strip
 
     card = @card_array[input.to_i - 1]
-    if input.to_i > @card_array.length || input.to_i <= 0
-     choose_again
-   elsif input == 'gtfoh'
+    if input == 'gtfoh'
      puts "GTFOH then!"
+   elsif input.to_i > @card_array.length || input.to_i <= 0
+     choose_again
    else
      info_display(card)
      end

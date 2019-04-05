@@ -16,23 +16,27 @@ attr_accessor :card_array
 
     input = nil
     until input == 'gtfoh'
-      input = gets.strip
+      input = gets.strip.to_i
 
     card = @card_array[input.to_i - 1]
-    if !card
-     puts "Wtf are you talking about? Try again."
+    if input.to_i > @card_array.length || input.to_i <= 0
+     choose_again
    elsif input == 'gtfoh'
      puts "GTFOH then!"
    else
-     puts "#{card[:name]} - #{card[:program]}
-             Position: #{card[:position]}
-             Overall: #{card[:ovr]}
-             Last AH Price: #{card[:price]}"
-     puts ""
-     puts "Choose another card, or type 'gtfoh' to exit!"
+     info_display(card)
      end
    end
 
+  end
+
+  def info_display(hash)
+    puts "#{hash[:name]} - #{hash[:program]}
+            Position: #{hash[:position]}
+            Overall: #{hash[:ovr]}
+            Last AH Price: #{hash[:price]}"
+    puts ""
+    puts "Choose another card, or type 'gtfoh' to exit!"
   end
 
   def card_list

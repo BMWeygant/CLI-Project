@@ -14,26 +14,26 @@ attr_accessor :card_array
 
     card_list
 
-    input = ""
-    until input == "gtfoh"
+    input = nil
+    until input == 'gtfoh'
       input = gets.strip
 
     card = @card_array[input.to_i - 1]
     if !card
-      puts "Wtf are you talking about? Try again."
+     puts "Wtf are you talking about? Try again."
+   elsif input == 'gtfoh'
+     puts "GTFOH then!"
+   else
+     puts "#{card[:name]} - #{card[:program]}
+             Position: #{card[:position]}
+             Overall: #{card[:ovr]}
+             Last AH Price: #{card[:price]}"
+     puts ""
+     puts "Choose another card, or type 'gtfoh' to exit!"
+     end
+   end
 
-      run
-    else
-      puts "#{card[:name]} - #{card[:program]}
-              Position: #{card[:position]}
-              Overall: #{card[:ovr]}
-              Last AH Price: #{card[:price]}"
-
-      puts "Choose another card, or type 'gtfoh' to exit!"
-      end
-    end
   end
-
 
   def card_list
     @card_array.each_with_index do |card, index|
@@ -41,9 +41,9 @@ attr_accessor :card_array
     end
   end
 
-  # def choose_another
-  #   puts ""
-  # end
+  def choose_again
+    puts "Wtf are you talking about? Try again."
+  end
 
   def welcome
     puts "Welcome!"
